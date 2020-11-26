@@ -1,0 +1,3 @@
+include ':Persian_Week_View_Library'
+include ':app'
+rootProject.name = "Persian_Week_View"
