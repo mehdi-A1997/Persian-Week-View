@@ -234,15 +234,19 @@ class WeekView(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : View
             when (mCurrentScrollDirection) {
                 Direction.NONE -> {
 
-                    // Allow scrolling only in one direction.
-                    mCurrentScrollDirection = if (Math.abs(distanceX) > Math.abs(distanceY)) {
-                        if (distanceX > 0) {
-                            Direction.LEFT
+                    if(getNumberOfVisibleDays() == 7)
+                        mCurrentScrollDirection= Direction.VERTICAL
+                    else{
+                        // Allow scrolling only in one direction.
+                        mCurrentScrollDirection =  if (Math.abs(distanceX) > Math.abs(distanceY)) {
+                            if (distanceX > 0) {
+                                Direction.LEFT
+                            } else {
+                                Direction.RIGHT
+                            }
                         } else {
-                            Direction.RIGHT
+                            Direction.VERTICAL
                         }
-                    } else {
-                        Direction.VERTICAL
                     }
                 }
                 Direction.LEFT -> {
